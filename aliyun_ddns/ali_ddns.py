@@ -137,7 +137,8 @@ class Sample:
             # 主机记录
             rr = record.rr
             ConsoleClient.log(f'记录ID: {record_id}, 记录类型: {record_type}, 主机记录: {rr}, 记录值: {record_value}')
-            if not UtilClient.equal_string(current_host_ip, record_value) and not is_debug:
+            if UtilClient.equal_string(record_type, 'AAAA') and not UtilClient.equal_string(current_host_ip,
+                                                                                            record_value) and not is_debug:
                 # 修改解析记录
                 req = dns_models.UpdateDomainRecordRequest()
                 # 主机记录
